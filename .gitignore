@@ -1,0 +1,7 @@
+.idea
+Lib
+Scripts
+db.sqlite3
+/pyvenv.cfg
+/celery_redis_emails/secret_info.py
+/include/site/python3.11/greenlet/greenlet.h

@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  redis:
+    image: redis
+    restart: always
+    container_name: 'redis_app'
+    ports:
+      - '6379:6379'
+
+  web:
+    build: .
+    restart: always
+    container_name: 'django_app'
+    ports:
+      - '8000:8000'
+    command: ['python', 'manage.py', 'runserver', '0.0.0.0:8000']
+
+  worker:
+    restart: always
+    build: .
+    command: ['celery', '-A', 'celery_redis_emails', 'worker', '-l', 'info']
+    depends_on:
+      - redis
+      - web

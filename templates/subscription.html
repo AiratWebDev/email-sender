@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %} Подписка на рассылку {% endblock %}
+{% block content %}
+    <div class="container">
+        <h2 style="margin-top: 10px">
+            Оставьте свои данные и я отправлю сообщение вам на почту
+        </h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="email_id">Укажите ваш почтовый адрес</label>
+            <br>
+            <input type="email" name="email" id="email_id" style="margin-bottom: 10px">
+            <br>
+            <label for="message_id">Ваше сообщение</label>
+            <br>
+            <textarea name="message" id="message_id" cols="30" rows="10" style="margin-bottom: 10px"></textarea>
+            <br>
+            <button class="btn btn-success">Отправить</button>
+        </form>
+    </div>
+{% endblock %}
